@@ -1,10 +1,11 @@
-package pl.azbn.springboot2security;
+package pl.azbn.springboot2security.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import pl.azbn.springboot2security.repo.AppUserRepo;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {

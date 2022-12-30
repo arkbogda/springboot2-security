@@ -1,4 +1,4 @@
-package pl.azbn.springboot2security;
+package pl.azbn.springboot2security.entity;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

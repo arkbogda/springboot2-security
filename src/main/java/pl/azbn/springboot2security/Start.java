@@ -3,6 +3,8 @@ package pl.azbn.springboot2security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import pl.azbn.springboot2security.entity.AppUser;
+import pl.azbn.springboot2security.repo.AppUserRepo;
 
 import javax.annotation.PostConstruct;
 

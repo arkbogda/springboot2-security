@@ -5,20 +5,24 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
-import pl.azbn.springboot2security.AppUser;
-import pl.azbn.springboot2security.AppUserRepo;
+import pl.azbn.springboot2security.entity.AppUser;
+import pl.azbn.springboot2security.repo.AppUserRepo;
+import pl.azbn.springboot2security.service.UserService;
 
 @Controller
 public class MainController {
 
     private AppUserRepo appUserRepo;
     private PasswordEncoder passwordEncoder;
+    private UserService userService;
 
     @Autowired
-    public MainController(AppUserRepo appUserRepo, PasswordEncoder passwordEncoder) {
+    public MainController(AppUserRepo appUserRepo, PasswordEncoder passwordEncoder, UserService userService) {
         this.appUserRepo = appUserRepo;
         this.passwordEncoder = passwordEncoder;
+        this.userService = userService;
     }
+
 
     @RequestMapping("/login")
     public String login() {
@@ -32,8 +36,7 @@ public class MainController {
 
     @RequestMapping("/register")
     public ModelAndView signup (AppUser user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        appUserRepo.save(user);
+        userService.addNewUser(user);
         return new ModelAndView("redirect:/login");
     }
 }
